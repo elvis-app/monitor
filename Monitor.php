@@ -3,7 +3,7 @@
  * 管理配置
  * @datetime  2018/9/27 12:12
  * @author    fangjianwei
- * @copyright www.zuzuche.com
+ * @copyright www.weicut.com
  */
 
 declare(strict_types = 1);//默认严格模式
