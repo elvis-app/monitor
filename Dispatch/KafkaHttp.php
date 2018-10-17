@@ -10,7 +10,7 @@ declare(strict_types = 1);//默认严格模式
 
 namespace TantuApiGateway\Monitor\Dispatch;
 
-use TantuApiGateway\Monitor\Exception\NetworkException;
+use TantuApiGateway\Monitor\Exception\DispatchException;
 
 /**
  * Class KafkaHttp
@@ -35,14 +35,14 @@ class KafkaHttp extends DispatchAbstract {
     /**
      * @author  fangjianwei
      * @param array $message
-     * @throws NetworkException
+     * @throws DispatchException
      */
     public function send(array $message): void {
         if (empty($this->url)) {
-            throw new NetworkException('缺少kafka服务url');
+            throw new DispatchException('缺少kafka服务url');
         }
         if (empty($this->topic)) {
-            throw new NetworkException('缺少kafka服务topic');
+            throw new DispatchException('缺少kafka服务topic');
         }
         $data = [
             'queue'     => [
@@ -74,7 +74,7 @@ class KafkaHttp extends DispatchAbstract {
         $errMsg = curl_error($ch);;
         curl_close($ch);
         if(!empty($errMsg)){
-            throw new NetworkException($errMsg);
+            throw new DispatchException($errMsg);
         }
 
     }

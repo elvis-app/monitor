@@ -22,7 +22,6 @@ class EsService extends DispatchAbstract {
     /**
      * @author  fangjianwei
      * @param array $message
-     * @throws NetworkException
      */
     public function send(array $message): void {
         if(empty($message)) return;
